@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Train {
+    private String id;
+    private String model;
+    private double maxSpeed;
+    private double weight;
+    private int productionYear;
+    private List<Wagon> wagons;
+
+    public Train(String id, String model) {
+        this.id = id;
+        this.model = model;
+        this.wagons = new ArrayList<>();
+    }
+
+    public Train(String id, String model, double maxSpeed, double weight, int productionYear) {
+        this.id = id;
+        this.model = model;
+        this.maxSpeed = maxSpeed;
+        this.weight = weight;
+        this.productionYear = productionYear;
+        this.wagons = new ArrayList<>();
+    }
+
+    public boolean addWagon(Wagon wagon) {
+        if (wagons.size() >= 200) {
+            return false; // Cannot add more than 200 wagons
+        }
+
+        // Ensure dangerous goods wagons are added last
+        if (wagon instanceof DangerousGoodsWagon && !wagons.isEmpty()) {
+            if (!(wagons.get(wagons.size() - 1) instanceof DangerousGoodsWagon)) {
+                return false; // Dangerous goods wagons must be added last
+            }
+        }
+
+        wagons.add(wagon);
+        return true;
+    }
+
+    public Wagon removeWagon(int id) {
+        for (Wagon wagon : wagons) {
+            if (wagon.getId() == id) {
+                wagons.remove(wagon);
+                return wagon;
+            }
+        }
+        return null;
+    }
+
+    public Wagon findSuitableWagon(Cargo cargo) {
+        for (Wagon wagon : wagons) {
+            if (wagon.canLoad(cargo)) {
+                return wagon;
+            }
+        }
+        return null;
+    }
+
+    // Other getters and setters
+}
