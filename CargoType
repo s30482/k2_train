@@ -1,0 +1,6 @@
+public enum CargoType {
+    SOLID,
+    LIQUID,
+    DANGEROUS,
+    TEMPERATURE_SENSITIVE
+}
