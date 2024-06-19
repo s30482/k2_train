@@ -1,0 +1,23 @@
+public class Cargo {
+    private double weight;
+    private double volume;
+    private CargoType type;
+
+    public Cargo(double weight, double volume, CargoType type) {
+        this.weight = weight;
+        this.volume = volume;
+        this.type = type;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public CargoType getType() {
+        return type;
+    }
+}
