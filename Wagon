@@ -1,0 +1,6 @@
+public interface Wagon {
+    int getId();
+    double getCapacity();
+    double getMaxLoadWeight();
+    boolean canLoad(Cargo cargo);
+}
