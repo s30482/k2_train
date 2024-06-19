@@ -1,0 +1,129 @@
+public class SolidWagon implements Wagon {
+    private int id;
+    private double capacity;
+    private double maxLoadWeight;
+
+    public SolidWagon(int id, double capacity, double maxLoadWeight) {
+        this.id = id;
+        this.capacity = capacity;
+        this.maxLoadWeight = maxLoadWeight;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public double getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public double getMaxLoadWeight() {
+        return maxLoadWeight;
+    }
+
+    @Override
+    public boolean canLoad(Cargo cargo) {
+        return cargo.getType() == CargoType.SOLID && cargo.getWeight() <= maxLoadWeight && cargo.getVolume() <= capacity;
+    }
+}
+
+public class LiquidWagon implements Wagon {
+    private int id;
+    private double capacity;
+    private double maxLoadWeight;
+
+    public LiquidWagon(int id, double capacity, double maxLoadWeight) {
+        this.id = id;
+        this.capacity = capacity;
+        this.maxLoadWeight = maxLoadWeight;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public double getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public double getMaxLoadWeight() {
+        return maxLoadWeight;
+    }
+
+    @Override
+    public boolean canLoad(Cargo cargo) {
+        return cargo.getType() == CargoType.LIQUID && cargo.getWeight() <= maxLoadWeight && cargo.getVolume() <= capacity;
+    }
+}
+
+public class DangerousGoodsWagon implements Wagon {
+    private int id;
+    private double capacity;
+    private double maxLoadWeight;
+
+    public DangerousGoodsWagon(int id, double capacity, double maxLoadWeight) {
+        this.id = id;
+        this.capacity = capacity;
+        this.maxLoadWeight = maxLoadWeight;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public double getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public double getMaxLoadWeight() {
+        return maxLoadWeight;
+    }
+
+    @Override
+    public boolean canLoad(Cargo cargo) {
+        return cargo.getType() == CargoType.DANGEROUS && cargo.getWeight() <= maxLoadWeight && cargo.getVolume() <= capacity;
+    }
+}
+
+public class TemperatureSensitiveWagon implements Wagon {
+    private int id;
+    private double capacity;
+    private double maxLoadWeight;
+    private double temperature;
+
+    public TemperatureSensitiveWagon(int id, double capacity, double maxLoadWeight, double temperature) {
+        this.id = id;
+        this.capacity = capacity;
+        this.maxLoadWeight = maxLoadWeight;
+        this.temperature = temperature;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public double getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public double getMaxLoadWeight() {
+        return maxLoadWeight;
+    }
+
+    @Override
+    public boolean canLoad(Cargo cargo) {
+        return cargo.getType() == CargoType.TEMPERATURE_SENSITIVE && cargo.getWeight() <= maxLoadWeight && cargo.getVolume() <= capacity && temperature >= 0 && temperature <= 5;
+    }
+}
